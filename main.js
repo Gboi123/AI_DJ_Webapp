@@ -5,7 +5,9 @@ rightWrist_y = 0;
 leftWrist_x = 0;
 leftWrist_y = 0;
 scoreleftWrist = 0;
-song_name = "";
+scorerightWrist = 0;
+song_Michael_Jackson = "";
+song_old_town_road = "";
 
 function setup(){
     canvas = createCanvas(600,530);
@@ -29,8 +31,11 @@ function draw(){
     fill("#00ff00");
     stroke("#ff0000");
 
-    song_name = old_town_road_song.isPlaying();
-    console.log(song_name);
+    song_old_town_road = old_town_road_song.isPlaying();
+    console.log(song_old_town_road);
+
+    song_Michael_Jackson = Michael_Jackson_song.isPlaying();
+    console.log(song_Michael_Jackson);
 
     if(scoreleftWrist > 0.2){
         circle(leftWrist_x,leftWrist_y,20);
@@ -39,9 +44,19 @@ function draw(){
             old_town_road_song.play();
         }
         else{
-            console.log("Song Name: Peter Pan Song");
-            document.getElementById("song_id").innerHTML = "Song Name: Peter Pan Song";
+            console.log("Song Name: old town road song");
+            document.getElementById("song_id").innerHTML = "Song Name: old town road song";
         }
+    if(scorerightWrist > 0.2){
+            circle(leftWrist_x,leftWrist_y,20);
+            old_town_road_song.stop();
+            if(song_name == false){
+            Michael_Jackson_song.play();
+            }
+        else{
+                console.log("Song Name: Michael Jackson song");
+                document.getElementById("song_id").innerHTML = "Song Name: Michael Jackson song";
+            }
     }
 }
 
@@ -64,4 +79,5 @@ function gotposes(results){
         rightWrist_y = results[0].pose.rightWrist.y;
         console.log("rightWrist_x = "+rightWrist_x+" rightWrist_y = "+rightWrist_y);
     }
+}
 }
